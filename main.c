@@ -38,9 +38,9 @@ I32 main() {
             case 4:
                 listar_voos_menu(&malha);
                 break;
-         /*   case 5:
+            case 5:
                 listar_trajetos_menu(&malha);
-                break; */
+                break; 
             case 0:
                 printf("\nEncerrando o programa...\n");
                 break;
@@ -161,5 +161,43 @@ void listar_voos_menu(MalhaAerea* malha) {
 }
 
 void listar_trajetos_menu(MalhaAerea* malha) {
-    printf("\nFuncao 'Listar Trajetos' ainda nao implementada.\n");
+    char origem[4]; 
+    char destino[4];
+
+    printf("\nListar trajetos possiveis entre dois aeroportos\n");
+    printf("\nPor favor informe o aeroporto de origem e destino\n");
+    
+    printf("Codigo do aeroporto de origem: ");  
+    scanf("%3s", origem);
+    limpar_buffer();    
+    printf("Codigo do aeroporto de destino: ");
+    scanf("%3s", destino);
+    limpar_buffer();
+
+    I32 idxOrigem = buscarIndiceAeroporto(malha, origem);
+    I32 idxDestino = buscarIndiceAeroporto(malha, destino);
+    if (idxOrigem < 0 || idxDestino < 0) {
+        printf("\nErro: um ou ambos os aeroportos nao existem.\n");
+        return;
+    }
+    printf("\nTrajetos possiveis de %s para %s:\n", 
+           malha->aeroportos[idxOrigem].codigo, 
+           malha->aeroportos[idxDestino].codigo);
+    boolean encontrou = false;
+    for (U32 i = 0; i < malha->qtdAeroportos; i++) {
+        if (malha->voos[idxOrigem][i] != 0 && malha->voos[i][idxDestino] != 0) {
+            printf("Voo de %s para %s via %s\n", 
+                   malha->aeroportos[idxOrigem].codigo, 
+                   malha->aeroportos[idxDestino].codigo, 
+                   malha->aeroportos[i].codigo);
+            encontrou = true;
+        }
+    }
+
+    if (!encontrou) {
+        printf("Nenhum trajeto possivel encontrado.\n");
+    }   
+
+    printf("\n");
+    return;
 }

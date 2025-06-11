@@ -18,6 +18,7 @@ boolean removerVoo(MalhaAerea* malha, U32 numeroVoo);
 
 // Estrutura para informação de voos de saída
 typedef struct {
+    I32 origemIdx;    // índice do aeroporto de origem  
     U32 numero;        // número do voo
     I32 destinoIdx;    // índice do aeroporto de destino
 } VooInfo;

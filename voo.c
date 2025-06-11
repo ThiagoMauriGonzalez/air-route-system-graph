@@ -64,3 +64,42 @@ boolean obterVoosSaida(MalhaAerea* malha, const char* origem, VooInfo** voos, U3
 void liberarVoos(VooInfo* voos) {
     free(voos);
 }
+
+boolean obterVoosConexao(MalhaAerea* malha, const char* origem, const char* destino, VooInfo** voos, U32* qtd) {
+    I32 idxOrig = buscarIndiceAeroporto(malha, origem);
+    I32 idxDest = buscarIndiceAeroporto(malha, destino);
+    if (idxOrig < 0 || idxDest < 0) {
+        *voos = NULL;
+        *qtd = 0;
+        return false;
+    }
+
+    // Conta quantos voos de origem a destino
+    U32 count = 0;
+    for (U32 j = 0; j < malha->qtdAeroportos; j++) {
+        if (malha->voos[idxOrig][j] != 0 && malha->voos[j][idxDest] != 0) {
+            count++;
+        }
+    }
+    
+    *qtd = count;
+    if (count == 0) {
+        *voos = NULL;
+        return true;
+    }
+
+    VooInfo* lista = (VooInfo*) malloc(sizeof(VooInfo) * count);
+    U32 k = 0;
+    for (U32 j = 0; j < malha->qtdAeroportos; j++) {
+        if (malha->voos[idxOrig][j] != 0 && malha->voos[j][idxDest] != 0) {
+            lista[k].numero = malha->voos[idxOrig][j];
+            lista[k].origemIdx = idxOrig;
+            lista[k].destinoIdx = j;
+            k++;
+        }
+    }
+    
+    *voos = lista;
+    return true;
+    
+}   
