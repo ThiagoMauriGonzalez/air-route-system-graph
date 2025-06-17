@@ -27,4 +27,9 @@ typedef struct {
 // Retorna false se o aeroporto não for encontrado, senão true e preenche *voos (malloc) e *qtd
 boolean obterVoosSaida(MalhaAerea* malha, const char* origem, VooInfo** voos, U32* qtd);
 
+// Obtém todos os voos que chegam a um aeroporto
+boolean obterVoosConexao(MalhaAerea* malha, const char* origem, const char* destino, VooInfo** voos, U32* qtd);
+
+void listarTodosCaminhos(MalhaAerea* malha, const char* origem, const char* destino);
+
 #endif
