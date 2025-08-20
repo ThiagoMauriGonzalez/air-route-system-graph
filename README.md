@@ -80,7 +80,7 @@ gcc main.c estrutura.c aeroporto.c voo.c -o malha.exe
 
 ### 👨‍💻 Autores
 
-- **Thiago Mauri Gonzalez** – [PUC-Campinas](https://www.puc-campinas.edu.br/)  
+- **Thiago Mauri Gonzalez, Victor Ramalho e Rafael Cespedes** – [PUC-Campinas](https://www.puc-campinas.edu.br/)  
 - Projeto desenvolvido no 3º semestre do curso de Sistemas de Informação.
 
 ---
@@ -166,7 +166,7 @@ gcc main.c estrutura.c aeroporto.c voo.c -o malha.exe
 
 ### 👨‍💻 Authors
 
-- **Thiago Mauri Gonzalez** – [PUC-Campinas](https://www.puc-campinas.edu.br/)  
+- **Thiago Mauri Gonzalez, Victor Ramalho and Rafael Cespedes** – [PUC-Campinas](https://www.puc-campinas.edu.br/)  
 - Project developed during the 3rd semester of the Information Systems program.
 
 ---
